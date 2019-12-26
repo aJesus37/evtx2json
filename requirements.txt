@@ -1,3 +1,3 @@
-splunk_hec_handler
+splunk_hec_handler # Not used so far, not sure if it will still exist in later releases
 xmljson
 python-evtx
