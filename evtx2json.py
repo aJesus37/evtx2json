@@ -255,8 +255,6 @@ def process_files(args):
             output_dir=os.path.abspath(args.output[0])
 
         output_file=str(re.sub(r'.*([\\|\/][\w\-\?]+)\.evtx','\\1.json', evtx_file))
-        print("Output will go to: " + output_dir +output_file)
-#        exit()
 
         if evtx_file.endswith(".evtx"):
             logger.debug("Now processing %s" % evtx_file)
