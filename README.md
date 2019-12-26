@@ -1,6 +1,9 @@
 # evtx2json
 A tool to convert Windows evtx files (Windows Event Log Files) into JSON format and log to Splunk (optional) using HTTP Event Collector.
 
+# Disclaimer
+This fork is intended to be a better version of the original [evtx2json](https://github.com/vavarachen/evtx2json)'s code, but also is intended for me to learn Python. So, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
 # installation
 ```console
 git clone https://github.com/vavarachen/evtx2json
