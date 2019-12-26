@@ -27,6 +27,7 @@ import Evtx.Evtx as evtx
 import time
 from glob import glob
 import argparse
+import re
 
 logger = logging.getLogger('evtx2json')
 logger.setLevel(logging.DEBUG)
@@ -244,7 +245,19 @@ def process_files(args):
 
     global error_counter
     start_time = int(time.time())
+
+
+
     for evtx_file in args.files:
+        if not args.output:
+            output_dir=os.path.abspath(re.sub('[\w\-]+\.evtx','', evtx_file))
+        else:
+            output_dir=os.path.abspath(args.output[0])
+
+        output_file=str(re.sub('.*([\\|\/][\w\-\?]+)\.evtx','\\1.json', evtx_file))
+        print("Output will go to: " + output_dir +output_file)
+#        exit()
+
         if evtx_file.endswith(".evtx"):
             logger.debug("Now processing %s" % evtx_file)
             success_counter = 0
@@ -258,9 +271,13 @@ def process_files(args):
                     error_counter += 1
                 else:
                     logger.info(json.loads(json.dumps(output['Event'])))
+                    f = open(output_dir + output_file, "a")
+                    f.write(str(json.dumps(output['Event'])+"\n"))
+                    f.close()
                     success_counter += 1
 
             output_stats(evtx_file, success_counter, start_time)
+            print("Output went to: " + output_dir + output_file)
 
 
 def process_folder(args):
@@ -292,6 +309,7 @@ if __name__ == "__main__":
     parser_fh = subparsers.add_parser('process_files')
     fh_parser_group = parser_fh.add_argument_group(title="Process evtx files")
     fh_parser_group.add_argument('--files', '-f', help="evtx file", nargs='+', required=True)
+    fh_parser_group.add_argument('--output', '-o', help="folder to output", nargs=1, required=False)
     fh_parser_group.set_defaults(func=process_files)
 
     # Parser for folder containing evtx files
