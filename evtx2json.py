@@ -250,11 +250,11 @@ def process_files(args):
 
     for evtx_file in args.files:
         if not args.output:
-            output_dir=os.path.abspath(re.sub('[\w\-]+\.evtx','', evtx_file))
+            output_dir=os.path.abspath(re.sub(r'[\w\-]+\.evtx','', evtx_file))
         else:
             output_dir=os.path.abspath(args.output[0])
 
-        output_file=str(re.sub('.*([\\|\/][\w\-\?]+)\.evtx','\\1.json', evtx_file))
+        output_file=str(re.sub(r'.*([\\|\/][\w\-\?]+)\.evtx','\\1.json', evtx_file))
         print("Output will go to: " + output_dir +output_file)
 #        exit()
 
