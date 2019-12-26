@@ -316,6 +316,7 @@ if __name__ == "__main__":
     parser_fh = subparsers.add_parser('process_folder')
     folder_parser_group = parser_fh.add_argument_group(title="Process folder containing evtx files")
     folder_parser_group.add_argument('--folder', help="Folder containing evtx files", required=True)
+    folder_parser_group.add_argument('--output', '-o', help="folder to output", nargs=1, required=False)
     folder_parser_group.set_defaults(func=process_folder)
 
     args = parser.parse_args()
