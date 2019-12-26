@@ -87,6 +87,12 @@ Process multiple evtx files in a folder
 python evtx2json.py process_folder --folder /path/to/evtx_folder
 ```
 
+File Output
+```console
+python evtx2json.py process_files --files file1.evtx --output /home/user/folder/
+```
+The output **should** be a folder. The files will have the same name as the input, but with `.evtx` replaced with `.json`
+
 Enable logging to Splunk
 ```console
 python evtx2json.py --splunk --host splunkfw.domain.tld --port 8888 --token BEA33046C-6FEC-4DC0-AC66-4326E58B54C3 \
