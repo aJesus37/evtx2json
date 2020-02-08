@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Script to convert evtx_dump.py XML output (https://github.com/williballenthin/python-evtx)
 to JSON and optionally, push events to Splunk via HTTP Event Collector (pip install splunk-hec-handler)
