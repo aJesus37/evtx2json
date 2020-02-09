@@ -7,6 +7,7 @@ This fork is intended to be a better version of the original [evtx2json](https:/
 # installation
 ```console
 git clone https://github.com/vavarachen/evtx2json
+cd evtx2json
 pip install --user --requirement requirements.txt
 ```
 
